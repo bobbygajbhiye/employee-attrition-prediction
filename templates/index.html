@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Employee Attrition Predictor</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='attrition-favicon.png') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Website Title -->
+    	<div class="container">
+            <h2 class='container-heading'><span class="heading_font">Employee Attrition Predictor</span></h2>
+            <div class='description'>
+    			<br><p>A Machine Learning Web App, Built with Flask, Deployed using Heroku.</p>
+    		</div>
+    	</div>
+
+        <!-- Text Area -->
+    	<div class="ml-container">
+    		<form action="{{ url_for('predict') }}" method="POST">
+
+				<input class="form-input" type="text" name="Age" placeholder="Age [18-60]"><br>
+				
+				<select class="form-select" name="BusinessTravel">
+					<option value="13">Business Travel</option>
+					<option value="0">Travel Rarely</option>
+					<option value="1">Travel Frequently</option>
+					<option value="2">Non-Travel</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="Department">
+				<option value="13">Department</option>
+				<option value="0">Sales</option>
+				<option value="1">Research & Development</option>
+				<option value="2">Human Resources</option>
+				</select>
+				<br>
+			
+				<input type="text" class="form-input" name="DistanceFromHome" placeholder="Distance From Home [1-30]">
+				<br>
+			
+				<select class="form-select" name="Education">
+				<option value="10">Education</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="EducationField">
+				<option value="16">Education Field</option>
+				<option value="0">Life Sciences</option>
+				<option value="1">Other</option>
+				<option value="2">Medical</option>
+				<option value="3">Marketing</option>
+				<option value="4">Technical Degree</option>
+				<option value="5">Human Resources</option>
+				</select>
+				<br>
+			
+				<select class="form-select"  name="EnvironmentSatisfaction">
+				<option value="10">Environment Satisfaction</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="Gender">
+				<option value="12">Gender</option>
+				<option value="0">Female</option>
+				<option value="1">Male</option>
+				</select>
+				<br>
+			
+				<input type="text" class="form-input" name="HourlyRate" placeholder="Hourly Rate [30-100]">
+				<br>
+			
+				<input type="text" class="form-input" name="DailyRate" placeholder="Daily Rate [100-1500]">
+				<br>
+			
+				<input type="text" class="form-input" name="MonthlyRate" placeholder="Monthly Rate [2000-27000]">
+				<br>
+			
+				<input type="text" class="form-input" name="MonthlyIncome" placeholder="Monthly Income [1000-20000]">
+				<br>
+			
+				<select class="form-select" name="JobInvolvement">
+				<option value="10">Job Involvement</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="JobLevel">
+				<option value="10">Job Level</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="JobRole">
+				<option value="19">Job Role</option>
+				<option value="0">Sales Executive</option>
+				<option value="1">Research Scientist</option>
+				<option value="2">Laboratory Technician</option>
+				<option value="3">Manufacturing Director</option>
+				<option value="4">Manager</option>
+				<option value="5">Sales Representative</option>
+				<option value="6">Research Director</option>
+				<option value="7">Human Resources</option>
+				<option value="8">Healthcare Representative</option>				
+				</select>
+				<br>
+			
+				<select class="form-select" name="JobSatisfaction">
+				<option value="10">Job Satisfaction</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="MaritalStatus">
+				<option value="10">Marital Status</option>
+				<option value="0">Married</option>
+				<option value="1">Single</option>
+				<option value="2">Divorce</option>
+				</select>
+				<br>
+			
+				<input type="text" class="form-input" name="NumCompaniesWorked" placeholder="Num of Companies Worked [0-10]">
+				<br>
+			
+				<select class="form-select" name="OverTime">
+				<option value="12">Over Time</option>
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+				</select>
+				<br>
+			
+				<input type="text" class="form-input" name="PercentSalaryHike" placeholder="Percent Salary Hike [11-25]">
+				<br>
+			
+				<select class="form-select" name="PerformanceRating">
+				<option value="10">Performance Rating</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+			
+				<select class="form-select" name="RelationshipSatisfaction">
+				<option value="10">Relationship Satisfaction</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+				
+				<select class="form-select" name="StockOptionLevel">
+				<option value="10">Stock Option Level</option>
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				</select>
+				<br>
+				
+				<input type="text" class="form-input" name="TotalWorkingYears" placeholder="Total Working Years [0-40]">
+				<br>
+				
+				<input type="text" class="form-input" name="TrainingTimesLastYear" placeholder="Training Times Last Year [0-6]">
+				<br>
+				
+				<select class="form-select" name="WorkLifeBalance">
+				<option value="10">Work Life Balance</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				</select>
+				<br>
+				
+				<input type="text" class="form-input" name="YearsAtCompany" placeholder="Years At Company [0-40]">
+				<br>
+				
+				<input type="text" class="form-input" name="YearsInCurrentRole" placeholder="Years In Current Role [0-20]">
+				<br>
+				
+				<input type="text" class="form-input" name="YearsSinceLastPromotion" placeholder="Years Since Last Promotion [0-15]">
+				<br>
+				
+				<input type="text" class="form-input" name="YearsWithCurrManager" placeholder="Years With Current Manager [0-20]">
+				<br>
+
+        		<input type="submit" class="my-cta-button" value="Predict">
+        	</form>
+    	</div>
+
+        <!-- Footer -->
+       <div class='footer'>
+           <div class="contact">
+               <a target="_blank" href="https://github.com/bobbygajbhiye"><i class="fab fa-github fa-lg contact-icon"></i></a>
+               <a target="_blank" href="https://www.linkedin.com/in/bobby-gajbhiye-17692a101/"><i class="fab fa-linkedin fa-lg contact-icon"></i></a>
+           </div>
+           <p class='footer-description'>Made by Bobby Gajbhiye</p>
+       </div>
+
+    </body>
+</html>
