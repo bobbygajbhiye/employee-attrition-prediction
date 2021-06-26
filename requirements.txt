@@ -4,7 +4,7 @@
 # ca-certificates=2021.5.25=haa95532_1
 # certifi=2021.5.30=py37haa95532_0
 #click=8.0.1=pypi_0
-colorama=0.4.4=pypi_0
+#colorama=0.4.4=pypi_0
 et-xmlfile=1.1.0=pypi_0
 flask=2.0.1=pypi_0
 imbalanced-learn=0.8.0=pypi_0
